@@ -64,8 +64,7 @@ class ConcurrencySolver:
                 per_process_operations[op.process.name] = str(op)
                 
                 if isinstance(op, LockOperation):
-                    if can_lock(self.locks, op.lock):
-                        op()
+                    if op(self.shared_state, self.locks) == True:
                         executed_count += 1
                     else:
                         op.process.operations.insert(0, op)
@@ -98,20 +97,33 @@ class ConcurrencySolver:
         
         self.paths = []
 
+        self._local_states_backup_stack = []
+
+        self._operations_backup_stack = []
+
         self.solve_step(path = [], tick = 1)
 
         return self.paths
     
+    def stash_processes(self, processes):
+         self._local_states_backup_stack.append({})
+         self._operations_backup_stack.append({})
+         for p in processes:
+            self._local_states_backup_stack[-1][p.name] = copy.deepcopy(p.local_state)
+            self._operations_backup_stack[-1][p.name] = copy.copy(p.operations)
+
+    def unstash_processes(self, processes): 
+        for p in processes:
+            p.local_state = copy.deepcopy(self._local_states_backup_stack[-1][p.name])
+            p.operations = copy.copy(self._operations_backup_stack[-1][p.name])
+        self._local_states_backup_stack.pop()
+        self._operations_backup_stack.pop()
+    
     def solve_step(self, path, tick):
 
-        shared_state_backup = copy.deepcopy(self.processes[0].shared_state)
-        locks_backup = copy.deepcopy(self.processes[0].locks)
-        local_states_backup = {}
-        for p in self.processes:
-            local_states_backup[p.name] = copy.deepcopy(p.local_state)
-        operations_backup = {}
-        for p in self.processes:
-            operations_backup[p.name] = copy.copy(p.operations)
+        shared_state_backup = copy.deepcopy(self.shared_state)
+
+        locks_backup = copy.deepcopy(self.locks)
         
         all_operations = []
         for p in self.processes:
@@ -126,10 +138,10 @@ class ConcurrencySolver:
 
         for op_set in operation_sets:
             dirty = False
-            self.processes[0].locks = copy.deepcopy(locks_backup)
+            self.locks = copy.deepcopy(locks_backup)
             for op in op_set:
-                if isinstance(op, LockOperation) and can_lock(self.processes[0].locks, op.lock):
-                    op()
+                if isinstance(op, LockOperation) and op(self.shared_state, self.locks) == True:
+                    pass
                 elif isinstance(op, LockOperation):
                     dirty = True
                     break
@@ -137,14 +149,11 @@ class ConcurrencySolver:
                 operation_sets_filtered.append(op_set)
    
         
-        
         for operations in operation_sets_filtered:
 
-            for p in self.processes:
-                p.shared_state = shared_state_backup
-                p.local_state = copy.deepcopy(local_states_backup[p.name])
-                p.operations = copy.copy(operations_backup[p.name])
-                p.locks = locks_backup
+            self.shared_state = shared_state_backup
+            self.locks = copy.deepcopy(locks_backup)
+            self.stash_processes(self.processes)
 
             per_process_operations = {}
 
@@ -152,17 +161,14 @@ class ConcurrencySolver:
                 per_process_operations[op.process.name] = str(op)
             
                 if isinstance(op, LockOperation):
-                    if can_lock(op.process.locks, op.lock):
-                        op()
+                    if op(self.shared_state, self.locks) == True:
                         op.process.operations.pop(0)
                 else:
-                    op()
+                    op(self.shared_state, self.locks)
                     op.process.operations.pop(0)
-
-
             
             global_state = {
-                'shared': copy.deepcopy(self.processes[0].shared_state)
+                'shared': copy.deepcopy(self.shared_state)
             }
 
             for p in self.processes:
@@ -176,11 +182,15 @@ class ConcurrencySolver:
                                  process_names = [p.name for p in self.processes]))
             
             
+            print(new_path)
 
             if all([len(p.operations) == 0 for p in self.processes]):
                 if (new_path):
                     self.paths.append(new_path)
+                self.unstash_processes(self.processes)
                 return
 
             self.solve_step(path = new_path, tick = tick + 1)
+
+            self.unstash_processes(self.processes)
 

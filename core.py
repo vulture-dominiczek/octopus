@@ -89,10 +89,10 @@ class ReadOperation:
         self.process = process
         self.data_transfer = data_transfer
 
-    def __call__(self):
+    def __call__(self, shared_state, locks):
         for dt in self.data_transfer:
             it, key = prepare_write(self.process.local_state, dt.to_path)
-            it[key] = read(self.process.shared_state, dt.from_path)
+            it[key] = read(shared_state, dt.from_path)
 
     def __str__(self):
         return f'Read {", ".join([str(dt) for dt in self.data_transfer])}'
@@ -107,9 +107,9 @@ class WriteOperation:
         self.process = process
         self.data_transfer = data_transfer
 
-    def __call__(self):
+    def __call__(self, shared_state, locks):
         for dt in self.data_transfer:
-            it, key = prepare_write(self.process.shared_state, dt.to_path)
+            it, key = prepare_write(shared_state, dt.to_path)
             it[key] = read(self.process.local_state, dt.from_path)
 
     def __str__(self):
@@ -124,7 +124,7 @@ class LetOperation:
         self.process = process
         self.assignments = assignments
 
-    def __call__(self):
+    def __call__(self, shared_state, locks):
         for assignment in self.assignments:
             it, key = prepare_write(self.process.local_state, assignment.path)
             it[key] = assignment.value
@@ -143,7 +143,7 @@ class ComputeOperation:
         self.fn = fn
         self.description = description
 
-    def __call__(self):
+    def __call__(self, shared_state, locks):
         self.fn(self.process.local_state)
 
     def __str__(self):
@@ -160,8 +160,12 @@ class LockOperation:
         self.data_path = data_path
         self.lock = Lock(data_path = self.data_path, process = self.process)
 
-    def __call__(self):
-        self.process.locks.append(self.lock)
+    def __call__(self, shared_state, locks):
+        if can_lock(locks, self.lock): 
+            locks.append(self.lock)
+            return True
+        else:
+            return False
 
     def __str__(self):
         return f'Lock {self.data_path}'
@@ -176,10 +180,10 @@ class UnlockOperation:
         self.process = process
         self.data_path = data_path
 
-    def __call__(self):
+    def __call__(self, shared_state, locks):
         try:
-            index = next((i for i, l in enumerate(self.process.locks) if l.data_path == self.data_path), None)
-            self.process.locks.pop(index)
+            index = next((i for i, l in enumerate(locks) if l.data_path == self.data_path), None)
+            locks.pop(index)
         except TypeError:
             pass
 
@@ -195,7 +199,7 @@ class NoopOperation:
     def __init__(self):
         pass
 
-    def __call__(self):
+    def __call__(self, shared_state, locks):
         pass
 
     def __str__(self):
