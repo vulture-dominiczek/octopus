@@ -1,0 +1,11 @@
+class PrintOpts:
+
+    TICK_WIDTH = 5
+
+    LOCAL_STATE_WIDTH = 40
+
+    SHARED_STATE_WIDTH = 60
+
+    OPERATION_WIDTH = 60
+
+    PRINT_LOCALS = True

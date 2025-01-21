@@ -1,0 +1,768 @@
+Successful runs: 8/63
+Failed runs: 55/63
+-----------------
+
+Run #1: SUCCESS
+Run #2: SUCCESS
+Run #3: SUCCESS
+Run #4: FAILURE
+Run #5: SUCCESS
+Run #6: SUCCESS
+Run #7: SUCCESS
+Run #8: FAILURE
+Run #9: FAILURE
+Run #10: FAILURE
+Run #11: FAILURE
+Run #12: FAILURE
+Run #13: FAILURE
+Run #14: FAILURE
+Run #15: FAILURE
+Run #16: FAILURE
+Run #17: FAILURE
+Run #18: FAILURE
+Run #19: FAILURE
+Run #20: FAILURE
+Run #21: FAILURE
+Run #22: FAILURE
+Run #23: FAILURE
+Run #24: FAILURE
+Run #25: FAILURE
+Run #26: FAILURE
+Run #27: FAILURE
+Run #28: FAILURE
+Run #29: FAILURE
+Run #30: FAILURE
+Run #31: FAILURE
+Run #32: FAILURE
+Run #33: FAILURE
+Run #34: FAILURE
+Run #35: FAILURE
+Run #36: FAILURE
+Run #37: FAILURE
+Run #38: FAILURE
+Run #39: FAILURE
+Run #40: FAILURE
+Run #41: FAILURE
+Run #42: FAILURE
+Run #43: FAILURE
+Run #44: SUCCESS
+Run #45: SUCCESS
+Run #46: FAILURE
+Run #47: FAILURE
+Run #48: FAILURE
+Run #49: FAILURE
+Run #50: FAILURE
+Run #51: FAILURE
+Run #52: FAILURE
+Run #53: FAILURE
+Run #54: FAILURE
+Run #55: FAILURE
+Run #56: FAILURE
+Run #57: FAILURE
+Run #58: FAILURE
+Run #59: FAILURE
+Run #60: FAILURE
+Run #61: FAILURE
+Run #62: FAILURE
+Run #63: FAILURE
+-----------------
+
+Run #1
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     | Compute Increment a                                          | {"a": 2}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 3     | Write a -> a                                                 | {"a": 2}                                 |                                                              |                                          | {"a": 2}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Read a -> a                                                  | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 3}                                 | {"a": 2}                                                     |
+| 6     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 3}                                 | {"a": 3}                                                     |
+
+Validity condition: {"a": 3}
+Status: SUCCESS
+Run #2
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     | Compute Increment a                                          | {"a": 2}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 2}                                 | Read a -> a                                                  | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 3}                                 | {"a": 2}                                                     |
+| 6     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 3}                                 | {"a": 3}                                                     |
+
+Validity condition: {"a": 3}
+Status: SUCCESS
+Run #3
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     | Compute Increment a                                          | {"a": 2}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 2}                                 | Read a -> a                                                  | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 3}                                 | {"a": 2}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 3}                                 | {"a": 2}                                                     |
+| 6     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 3}                                 | {"a": 3}                                                     |
+
+Validity condition: {"a": 3}
+Status: SUCCESS
+Run #4
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     | Compute Increment a                                          | {"a": 2}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 2}                                 | Read a -> a                                                  | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 3}                                 | {"a": 2}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 3}                                 | {"a": 3}                                                     |
+| 6     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 3}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #5
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     | Compute Increment a                                          | {"a": 2}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 2}                                 | Read a -> a                                                  | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 3}                                 | {"a": 2}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 | Write a -> a                                                 | {"a": 3}                                 | {"a": 3}                                                     |
+
+Validity condition: {"a": 3}
+Status: SUCCESS
+Run #6
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     | Compute Increment a                                          | {"a": 2}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 2}                                 | Read a -> a                                                  | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     | Write a -> a                                                 | {"a": 2}                                 | Compute Increment a                                          | {"a": 3}                                 | {"a": 2}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 3}                                 | {"a": 3}                                                     |
+
+Validity condition: {"a": 3}
+Status: SUCCESS
+Run #7
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     | Compute Increment a                                          | {"a": 2}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 3     | Write a -> a                                                 | {"a": 2}                                 | Read a -> a                                                  | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 3}                                 | {"a": 2}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 3}                                 | {"a": 3}                                                     |
+
+Validity condition: {"a": 3}
+Status: SUCCESS
+Run #8
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     |                                                              | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 4     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 1}                                 | {"a": 2}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 2}                                                     |
+| 6     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #9
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     |                                                              | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+| 6     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #10
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     |                                                              | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 6     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #11
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     |                                                              | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #12
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     |                                                              | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 4     | Write a -> a                                                 | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #13
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     |                                                              | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 1}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 1}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+| 6     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #14
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     |                                                              | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 1}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 1}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 6     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #15
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     |                                                              | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 1}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 1}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #16
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     |                                                              | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 1}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     |                                                              | {"a": 1}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+| 6     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #17
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     |                                                              | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 1}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     | Compute Increment a                                          | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #18
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     |                                                              | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #19
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     |                                                              | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #20
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     |                                                              | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     | Write a -> a                                                 | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #21
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     | Compute Increment a                                          | {"a": 2}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 1}                                 | {"a": 2}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #22
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     | Compute Increment a                                          | {"a": 2}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #23
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     | Compute Increment a                                          | {"a": 2}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #24
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     | Compute Increment a                                          | {"a": 2}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     | Write a -> a                                                 | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #25
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 |                                                              |                                          | {"a": 1}                                                     |
+| 2     | Compute Increment a                                          | {"a": 2}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     | Write a -> a                                                 | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #26
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Read a -> a                                                  | {"a": 1}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 4     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 1}                                 | {"a": 2}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 2}                                                     |
+| 6     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #27
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Read a -> a                                                  | {"a": 1}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+| 6     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #28
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Read a -> a                                                  | {"a": 1}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 6     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #29
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Read a -> a                                                  | {"a": 1}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #30
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Read a -> a                                                  | {"a": 1}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 4     | Write a -> a                                                 | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #31
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Read a -> a                                                  | {"a": 1}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 1}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 1}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+| 6     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #32
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Read a -> a                                                  | {"a": 1}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 1}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 1}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 6     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #33
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Read a -> a                                                  | {"a": 1}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 1}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 1}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #34
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Read a -> a                                                  | {"a": 1}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 1}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     |                                                              | {"a": 1}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+| 6     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #35
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Read a -> a                                                  | {"a": 1}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 1}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     | Compute Increment a                                          | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #36
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Read a -> a                                                  | {"a": 1}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #37
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Read a -> a                                                  | {"a": 1}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #38
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Read a -> a                                                  | {"a": 1}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     | Write a -> a                                                 | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #39
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     |                                                              |                                          | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 3     | Read a -> a                                                  | {"a": 1}                                 |                                                              | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 1}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+| 6     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #40
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     |                                                              |                                          | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 3     | Read a -> a                                                  | {"a": 1}                                 |                                                              | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 1}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 6     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #41
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     |                                                              |                                          | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 3     | Read a -> a                                                  | {"a": 1}                                 |                                                              | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 1}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #42
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     |                                                              |                                          | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 3     | Read a -> a                                                  | {"a": 1}                                 |                                                              | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     |                                                              | {"a": 1}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+| 6     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #43
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     |                                                              |                                          | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 3     | Read a -> a                                                  | {"a": 1}                                 |                                                              | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     | Compute Increment a                                          | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #44
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     |                                                              |                                          | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 3     |                                                              |                                          | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     | Read a -> a                                                  | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     | Compute Increment a                                          | {"a": 3}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+| 6     | Write a -> a                                                 | {"a": 3}                                 |                                                              | {"a": 2}                                 | {"a": 3}                                                     |
+
+Validity condition: {"a": 3}
+Status: SUCCESS
+Run #45
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     |                                                              |                                          | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 3     | Read a -> a                                                  | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     | Compute Increment a                                          | {"a": 3}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     | Write a -> a                                                 | {"a": 3}                                 |                                                              | {"a": 2}                                 | {"a": 3}                                                     |
+
+Validity condition: {"a": 3}
+Status: SUCCESS
+Run #46
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Read a -> a                                                  | {"a": 1}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #47
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Read a -> a                                                  | {"a": 1}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #48
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Read a -> a                                                  | {"a": 1}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     | Write a -> a                                                 | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #49
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Read a -> a                                                  | {"a": 1}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 1}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #50
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     |                                                              |                                          | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Read a -> a                                                  | {"a": 1}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #51
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 1}                                 | {"a": 2}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #52
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #53
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #54
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     | Write a -> a                                                 | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #55
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 1}                                 | {"a": 1}                                                     |
+| 3     | Write a -> a                                                 | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #56
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     |                                                              | {"a": 1}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #57
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     |                                                              | {"a": 1}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #58
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     |                                                              | {"a": 1}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 1}                                                     |
+| 4     | Write a -> a                                                 | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #59
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     |                                                              | {"a": 1}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 1}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     | Compute Increment a                                          | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+| 5     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #60
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     |                                                              | {"a": 1}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 3     | Compute Increment a                                          | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #61
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Compute Increment a                                          | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 3     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #62
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Compute Increment a                                          | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 3     |                                                              | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+| 4     | Write a -> a                                                 | {"a": 2}                                 |                                                              | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
+Run #63
+
+| TICK  | Alice OPERATION                                              | Alice LOCALS                             | Bob OPERATION                                                | Bob LOCALS                               |  SHARED                                                      |
+| 1     | Read a -> a                                                  | {"a": 1}                                 | Read a -> a                                                  | {"a": 1}                                 | {"a": 1}                                                     |
+| 2     | Compute Increment a                                          | {"a": 2}                                 | Compute Increment a                                          | {"a": 2}                                 | {"a": 1}                                                     |
+| 3     | Write a -> a                                                 | {"a": 2}                                 | Write a -> a                                                 | {"a": 2}                                 | {"a": 2}                                                     |
+
+Validity condition: {"a": 3}
+Status: FAILURE
